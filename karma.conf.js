@@ -69,15 +69,15 @@ module.exports = function (config) {
 
     // Settings for Teamcity
     plugins: [
-      'karma-webpack',
-      'karma-chrome-launcher',
-      'karma-phantomjs-launcher',
-      'karma-jasmine',
-      'karma-sourcemap-loader',
-      'karma-remap-istanbul',
-      'karma-coverage',
-      'karma-mocha-reporter',
-      'karma-teamcity-reporter'
+      require('karma-webpack'),
+      require('karma-chrome-launcher'),
+      require('karma-phantomjs-launcher'),
+      require('karma-jasmine'),
+      require('karma-sourcemap-loader'),
+      require('karma-remap-istanbul'),
+      require('karma-coverage'),
+      require('karma-mocha-reporter'),
+      require('karma-teamcity-reporter')
     ]
   };
 
