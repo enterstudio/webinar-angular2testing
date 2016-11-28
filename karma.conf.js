@@ -65,7 +65,13 @@ module.exports = function (config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: true,
+
+    // Settings for Teamcity
+    plugins: [
+      require('karma-phantomjs-launcher'),
+      require('karma-teamcity-reporter')
+    ]
   };
 
   if (!isTestWatch) {
