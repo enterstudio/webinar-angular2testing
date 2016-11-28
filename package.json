@@ -18,7 +18,7 @@
     "pretest": "npm run lint",
     "test": "karma start",
     "posttest": "remap-istanbul -i coverage/json/coverage-final.json -o coverage/html -t html",
-    "test-teamcity": "karma start --browser=PhantomJS --reporters=teamcity",
+    "test-teamcity": "karma start --browsers=PhantomJS --reporters=teamcity",
     "posttest-teamcity": "remap-istanbul -i coverage/json/coverage-final.json -o coverage/html -t html",
     "test-watch": "karma start --no-single-run --auto-watch",
     "ci": "npm run e2e && npm run test",

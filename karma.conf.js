@@ -69,8 +69,15 @@ module.exports = function (config) {
 
     // Settings for Teamcity
     plugins: [
-      require('karma-phantomjs-launcher'),
-      require('karma-teamcity-reporter')
+      'karma-webpack',
+      'karma-chrome-launcher',
+      'karma-phantomjs-launcher',
+      'karma-jasmine',
+      'karma-sourcemap-loader',
+      'karma-remap-istanbul',
+      'karma-coverage',
+      'karma-mocha-reporter',
+      'karma-teamcity-reporter'
     ]
   };
 
