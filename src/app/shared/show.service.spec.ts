@@ -1,4 +1,4 @@
-import { async, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import {
   BaseRequestOptions,
   Http,
@@ -11,11 +11,12 @@ import { MockBackend } from '@angular/http/testing';
 import { ShowService } from './show.service';
 
 describe('ShowService', () => {
-  let showService, mockBackend, fakeShows, fakeShow;
+  let showService: ShowService;
+  let mockBackend: MockBackend;
+  let fakeShows, fakeShow;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
       providers: [
         ShowService,
         {
@@ -31,9 +32,9 @@ describe('ShowService', () => {
     });
   });
 
-  beforeEach(async(inject([ShowService, MockBackend], (_showService_, _mockBackend_) => {
-    showService = _showService_;
-    mockBackend = _mockBackend_;
+  beforeEach(inject([ShowService, MockBackend], (service: ShowService, backend: MockBackend) => {
+    showService = service;
+    mockBackend = backend;
 
     fakeShows = {
       data: [
@@ -47,7 +48,7 @@ describe('ShowService', () => {
     fakeShow = {
       data: { id: 1, name: 'Barrio Sésamo', cover: 'galletas', rating: 3 }
     };
-  })));
+  }));
 
   it('gets the list of shows', () => {
     mockBackend.connections.subscribe((connection) => {
@@ -70,8 +71,14 @@ describe('ShowService', () => {
       })));
     });
 
-    showService.getShow(1).subscribe((show) => {
+    showService.getShow(20).subscribe((show) => {
       expect(show.name).toBe('Barrio Sésamo');
     });
   });
+
+  it('gets one show from api/shows/1', inject([Http], (http: Http) => {
+    spyOn(http, 'get').and.callThrough();
+    showService.getShow(1);
+    expect(http.get).toHaveBeenCalledWith('api/shows/1');
+  }));
 });
