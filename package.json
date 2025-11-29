@@ -25,7 +25,7 @@
     "postinstall": "npm run webdriver-update"
   },
   "dependencies": {
-    "@angular/common": "2.2.3",
+    "@angular/common": "19.2.16",
     "@angular/compiler": "2.2.3",
     "@angular/core": "2.2.3",
     "@angular/forms": "2.2.3",
